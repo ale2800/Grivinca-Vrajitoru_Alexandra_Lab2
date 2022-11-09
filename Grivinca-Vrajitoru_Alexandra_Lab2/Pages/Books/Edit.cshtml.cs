@@ -45,8 +45,7 @@ namespace Grivinca_Vrajitoru_Alexandra_Lab2.Pages.Books
                 FullName = x.LastName + " " + x.FirstName
             });
             ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID",
-           "PublisherName");
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID","PublisherName");
             return Page();
         }
 
@@ -67,11 +66,7 @@ namespace Grivinca_Vrajitoru_Alexandra_Lab2.Pages.Books
             {
                 return NotFound();
             }
-            if (await TryUpdateModelAsync<Book>(
-            bookToUpdate,
-            "Book",
-            i => i.Title, i => i.AuthorID,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
+            if (await TryUpdateModelAsync<Book>(bookToUpdate,"Book",i => i.Title, i => i.AuthorID,i => i.Price, i => i.PublishingDate, i => i.PublisherID))
             {
                 UpdateBookCategories(_context, selectedCategories, bookToUpdate);
                 await _context.SaveChangesAsync();

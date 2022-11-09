@@ -61,18 +61,16 @@ searchString)
                     .Where(i => i.ID == id.Value).Single();
                     BookD.Categories = book.BookCategories.Select(s => s.Category);
                 }
+            }
                 switch (sortOrder)
                 {
                     case "title_desc":
-                        BookD.Books = BookD.Books.OrderByDescending(s =>
-                       s.Title);
+                        BookD.Books = BookD.Books.OrderByDescending(s => s.Title);
                         break;
                     case "author_desc":
-                        BookD.Books = BookD.Books.OrderByDescending(s =>
-                       s.Author.FullName);
+                        BookD.Books = BookD.Books.OrderByDescending(s => s.Author.FullName);
                         break;
                 }
             }
         }
     }
-}
